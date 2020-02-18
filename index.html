@@ -1,0 +1,130 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>New Tab</title>
+    <script src="https://s3-us-west-2.amazonaws.com/reallysimpleweather/reallysimpleweather-1.1.0.min.js"></script>
+    <script>
+        reallySimpleWeather.weather({
+            wunderkey: '', // leave blank for Yahoo
+            location: 'Sofia, BG', //your location 
+            woeid: '', // "Where on Earth ID"
+            unit: 'f', // 'c' also works
+            success: function (weather) {
+				c = Math.round((5/9) * (weather.temp - 32));
+                html =
+                    "<h2><a href=\"https://www.wunderground.com/\">Weather</a></h2><div class=\"content\">" +
+                    "<div>" + weather.temp + "°" + weather.units.temp + "<p id=\"smallc\">" + c + "°C" + '</p></div>';
+                html += "<div>" + "It's Always " + weather.currently + " in " + weather.city + "</div>";
+                html += "<div>" + weather.wind.direction + " " + weather.wind.speed + " " + weather.units.speed +
+                    "</div></div>";
+                document.getElementById('weather').innerHTML = html;
+            },
+            error: function (error) {
+                document.getElementById('weather').innerHTML = '<p>' + error + '</p>';
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="left shell" id="boards">
+            <h2><a href="https://www.4chan.org/">Boards</a></h1>
+                <div class="content">
+                    <div><a href="https://boards.4chan.org/g/">/g/ - Technology</a></div>
+                    <div><a href="https://boards.4chan.org/diy/">/diy/ - Do It Yourself</a></div>
+                    <div><a href="https://boards.4chan.org/f/">/f/ - Flash</a></div>
+                </div>
+        </div>
+
+        <div class="middle shell" id="college">
+            <h2><a href="https://www.minneapolis.edu/">College</a></h1>
+                <div class="content">
+                    <div><a href="https://webproc.mnscu.edu/student-portal/secure/dashboard.do?campusid=305&tokenTicket=%2F%2FJHp*zy4*XnBQct4537w0dN3kwB">eServices</a></div>
+                    <div><a href="https://minneapolis.ims.mnscu.edu/">D2L Brightspace</a></div>
+                    <div><a href="https://outlook.office365.com/owa/?realm=go.minneapolis.edu">Email</a></div>
+                    <div><a href="https://www.office.com/?auth=2&home=1">Office365</a></div>
+                    <div><a href="https://sam.cengage.com/App/Student#/activityList">SAM</a></div>
+                </div>
+        </div>
+
+        <div class="right shell" id="google">
+            <h2><a href="https://www.google.com/">Google</a></h1>
+                <div class="content">
+                    <div><a href="https://drive.google.com/drive/">Drive</a></div>
+                    <div><a href="https://mail.google.com/mail/">Email</a></div>
+                    <div><a href="https://www.google.com/maps">Maps</a></div>
+                    <div><a href="https://www.youtube.com/">YouTube</a></div>
+                    <div><a href="https://play.google.com/music/listen#/artists">Play Music</a></div>
+                    <div onclick="window.location = \"http:\/\/chrome:\/\/apps"">Chrome Apps</div>
+                    
+                </div>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="wrapper">
+        <div class="left shell" id="tech">
+            <h2>Tech</h2>
+            <div class="content">
+                <div><a href="https://news.ycombinator.com/">Hacker News</a></div>
+                <div><a href="https://github.com/">GitHub</a></div>
+                <div><a href="https://wiki.installgentoo.com/index.php/Main_Page">InstallGentoo Wiki</a></div>
+                <div><a href="https://stackoverflow.com/">Stack Overflow</a></div>
+                <div><a href="https://www.w3schools.com/">W3Schools</a></div>
+                <div><a href="https://www.edx.org/">edX</a></div>
+                <div><a href="https://forum.xda-developers.com/">XDA Forums</a></div>
+            </div>
+        </div>
+
+        <div class="middle shell">
+            <h2>Shopping</h2>
+            <div class="content">
+                <div><a href="https://www.amazon.com/">Amazon</a></div>
+                <div><a href="https://www.ebay.com/">eBay</a></div>
+                <div><a href="https://www.newegg.com/">Newegg</a></div>
+                <div><a href="https://www.aliexpress.com/">AliExpress</a></div>
+                <div><a href="https://craigslist.org">Craigslist</a></div>
+            </div>
+        </div>
+
+        <div class="right shell" id="other">
+            <h2>Other</h2>
+            <div class="content">
+                <div><a href="https://www.netflix.com/browse">Netflix</a></div>
+                <div><a href="https://thepiratebay.org/">Cool Eye Patches</a></div>
+                <div><a href="https://rarbg.to/torrents.php">RARBG</a></div>
+                <div><a href="https://www.wikipedia.org/">Wikipedia</a></div>
+                <div><a href="https://pcpartpicker.com/">PCPartPicker</a></div>
+                <div><a href="https://en.wikinews.org/wiki/Main_Page">Wikinews</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="wrapper">
+        <div class="left shell" id="weather"></div>
+        <!--<div class="middle shell" id="music">
+            <iframe src="https://www.youtube.com/embed/ETfiUYij5UE" frameborder="0" allowfullscreen></iframe>
+        </div>-->
+        <div class="middle shell" id="schedule">
+            <h2>Schedule</h2>
+            <div class="content" id="schecont">
+            </div>
+        </div>
+        <div class="right shell" id="datetime">
+            <h2>Date / Time</h2>
+            <div class="content">
+                <div id="date"></div>
+                <div id="time"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="main.js"></script>
+
+</html>
